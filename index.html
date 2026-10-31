@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأسيس | TASEES - منصة تأسيس الشركات والخدمات الحكومية</title>
+    <style>
+        :root {
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --primary-color: #0f172a;
+            --accent-color: #2563eb;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #16a34a;
+            --danger-color: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 32px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .brand-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-nav {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-login {
+            background: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .price-box {
+            background: var(--bg-main);
+            border-radius: 6px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            margin: 12px 0;
+        }
+
+        .btn-order {
+            background: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .feature-section {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tracker-input-box {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .tracker-input-box input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .doc-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .doc-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            background: var(--bg-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-widget-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        .chat-box {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            width: 320px;
+            height: 400px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 16px;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 12px;
+            overflow-y: auto;
+            font-size: 0.85rem;
+        }
+
+        .chat-input {
+            display: flex;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .chat-input input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            outline: none;
+        }
+
+        .chat-input button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0 16px;
+            cursor: pointer;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            padding: 24px;
+            position: relative;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 24px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="brand">
+                <div class="brand-logo">T</div>
+                <div class="brand-title">تأسيس | TASEES</div>
+            </div>
+            <div class="nav-controls">
+                <button class="btn-nav" onclick="showSection('trackerSection')">🔍 متتبع الطلبات</button>
+                <button class="btn-nav" onclick="showSection('vaultSection')">📁 خزنة المستندات</button>
+                <button class="btn-login" onclick="openLoginModal()">تسجيل الدخول</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- قسم تتبع الطلبات المخصص للمستثمر -->
+        <div class="feature-section" id="trackerSection">
+            <div class="feature-title">📊 متتبع طلبات المستثمر (Investor Request Tracker)</div>
+            <div class="tracker-input-box">
+                <input type="text" id="orderSearchInput" placeholder="أدخل رقم الطلب (مثال: TAS-2026-8812)">
+                <button class="btn-order" style="width: auto; padding: 0 24px;" onclick="trackOrder()">استعلام</button>
+            </div>
+            <div id="trackerResult" style="display: none; background: var(--bg-main); padding: 16px; border-radius: 8px;">
+                <div style="font-weight: 700; margin-bottom: 8px;" id="orderTitleResult">خدمة: تأسيس شركة وإصدار سجل تجاري</div>
+                <div style="color: var(--success-color); font-size: 0.9rem;">الحالة الحالية: 🔄 جاري مراجعة المعاملة مع المعقب المعتمد (الضمان المالي مفعل)</div>
+            </div>
+        </div>
+
+        <!-- قسم خزنة المستندات الرقمية -->
+        <div class="feature-section" id="vaultSection">
+            <div class="feature-title">🔒 خزنة المستندات الرقمية (Document Vault)</div>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">مساحة آمنة لحفظ وتنزيل العقود والتراخيص الرسمية الخاصة بمركبتك أو منشأتك.</p>
+            <div class="doc-list">
+                <div class="doc-item">
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.9rem;">عقد تأسيس الشركة.pdf</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">تم التوثيق • 2026/10/12</div>
+                    </div>
+                    <button class="btn-nav" onclick="alert('جاري تنزيل المستند المشفر...')">⬇️ تنزيل</button>
+                </div>
+                <div class="doc-item">
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.9rem;">السجل التجاري الرئيسي.pdf</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">صادر من وزارة التجارة</div>
+                    </div>
+                    <button class="btn-nav" onclick="alert('جاري تنزيل المستند المشفر...')">⬇️ تنزيل</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- الخدمات الرئيسية -->
+        <div class="hero">
+            <h1>منصة تأسيس الشركات والخدمات الحكومية</h1>
+            <p>اختر الخدمة المطلوبة لإنجازها بأسعار تنافسية وبضمان مالي كامل</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <div class="card-title">تأسيس شركة وإصدار سجل تجاري</div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">عقد التأسيس والسجل التجاري عبر المركز السعودي للأعمال.</p>
+                    <div class="price-box">
+                        <div style="font-weight: 700;">المبلغ الإجمالي: 2,000 ر.س</div>
+                    </div>
+                </div>
+                <button class="btn-order" onclick="openPaymentModal('تأسيس شركة وإصدار سجل تجاري', 2000)">تقديم وطلب بوابة الدفع</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة بوابة الدفع الإلكتروني -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal-card" style="position: relative;">
+            <button style="position: absolute; top: 12px; left: 12px; border: none; background: none; cursor: pointer;" onclick="closePaymentModal()">✕</button>
+            <h3 style="margin-bottom: 16px;">💳 بوابة الدفع الآمن - الضمان المالي</h3>
+            <div style="background: var(--bg-main); padding: 12px; border-radius: 6px; margin-bottom: 16px; font-size: 0.85rem;">
+                <div id="payServiceName">الخدمة: --</div>
+                <div id="payAmount" style="font-weight: 700; color: var(--accent-color); margin-top: 4px;">المبلغ: 0 ر.س</div>
+            </div>
+            <div style="margin-bottom: 12px; font-size: 0.85rem; font-weight: 600;">اختر وسيلة الدفع:</div>
+            <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+                <button class="btn-nav" style="flex: 1;" onclick="selectPay('mada')">mada (مدى)</button>
+                <button class="btn-nav" style="flex: 1;" onclick="selectPay('apple')">Apple Pay</button>
+                <button class="btn-nav" style="flex: 1;" onclick="selectPay('card')">بطاقة ائتمان</button>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 16px;">* يتم حجز المبلغ في حساب الضمان المالي ولا يُصرف للمعقب إلا بعد توثيق الإنجاز.</p>
+            <button class="btn-order" onclick="processPayment()">تأكيد الدفع واحتجاز المبلغ بالضمان</button>
+        </div>
+    </div>
+
+    <!-- نافذة الدردشة المباشرة -->
+    <button class="chat-widget-btn" onclick="toggleChat()">💬 الدعم المباشر</button>
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">
+            <span>الدعم الفني والخدمات المباشرة</span>
+            <span style="cursor: pointer;" onclick="toggleChat()">✕</span>
+        </div>
+        <div class="chat-body" id="chatMessages">
+            <div style="background: #f1f5f9; padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;">أهلاً بك! كيف يمكننا مساعدتك في معاملاتك اليوم؟</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="اكتب رسالتك هنا...">
+            <button onclick="sendMessage()">إرسال</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>منصة تأسيس | TASEES &copy; 2026 - جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        function showSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function trackOrder() {
+            let val = document.getElementById('orderSearchInput').value;
+            if(val) {
+                document.getElementById('trackerResult').style.display = 'block';
+            } else {
+                alert("يرجى إدخال رقم الطلب الصحيح.");
+            }
+        }
+
+        function openPaymentModal(service, price) {
+            document.getElementById('payServiceName').innerText = "الخدمة: " + service;
+            document.getElementById('payAmount').innerText = "المبلغ الإجمالي: " + price + " ر.س";
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function selectPay(method) {
+            alert("تم اختيار طريقة الدفع: " + method.toUpperCase());
+        }
+
+        function processPayment() {
+            alert("✅ تم إتمام العملية بنجاح! تم احتجاز المبلغ بمحفظة الضمان المالي للمنصة.");
+            closePaymentModal();
+        }
+
+        function toggleChat() {
+            let box = document.getElementById('chatBox');
+            box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function sendMessage() {
+            let input = document.getElementById('chatInput');
+            if(input.value.trim() !== '') {
+                let msgBox = document.getElementById('chatMessages');
+                let userMsg = document.createElement('div');
+                userMsg.style.cssText = "background: #dbeafe; padding: 8px 12px; border-radius: 6px; margin-bottom: 8px; text-align: left;";
+                userMsg.innerText = input.value;
+                msgBox.appendChild(userMsg);
+                input.value = '';
+                
+                setTimeout(() => {
+                    let reply = document.createElement('div');
+                    reply.style.cssText = "background: #f1f5f9; padding: 8px 12px; border-radius: 6px; margin-bottom: 8px;";
+                    reply.innerText = "شكراً لتواصلك! جاري ربطك بأحد ممثلي الدعم الفني لمتابعة معاملتك.";
+                    msgBox.appendChild(reply);
+                    msgBox.scrollTop = msgBox.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        function openLoginModal() {
+            alert("افتراضياً يمكنك تجربة واجهة النظام والخدمات المتاحة.");
+        }
+    </script>
+</body>
+</html>
